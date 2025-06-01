@@ -215,11 +215,31 @@ header {
   justify-self: end;
   margin-top: 5px;
   width: 120px;
-  height: 36px; /* Altura consistente com outros botões */
-  display: flex; /* Adicionado para centralização */
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
-  padding: 0; /* Remove padding padrão para melhor controle */
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+/* Adicione esta media query específica para tablet */
+@media (max-width: 768px) {
+  #adicionar-btn {
+    width: 110px;  /* Reduzindo a largura */
+    height: 34px;  /* Reduzindo a altura */
+    font-size: 0.85rem;  /* Texto um pouco menor */
+    margin-top: 10px;  /* Espaçamento ajustado */
+    margin-right: 10px;  /* Alinhamento melhorado */
+  }
+}
+
+/* Ajuste adicional para telas muito pequenas */
+@media (max-width: 480px) {
+  #adicionar-btn {
+    width: 100%;  /* Ocupa toda a largura */
+    max-width: 150px;  /* Mas não mais que 150px */
+    margin: 10px auto;  /* Centralizado horizontalmente */
+  }
 }
 
 /* Tabela Estilizada */
