@@ -1,0 +1,481 @@
+:root {
+  --roxo: #9b59b6;
+  --roxo-claro: #d2b4e8;
+  --branco: #ffffff;
+  --cinza: #f5f5f5;
+  --cinza-claro: #f0f0f0;
+  --cinza-escuro: #666666;
+  --borda: #e0e0e0;
+  --sombra: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --sombra-destaque: 0 8px 24px rgba(0, 0, 0, 0.15);
+  --vermelho: #e74c3c;
+  --vermelho-escuro: #c0392b;
+  --verde: #2ecc71;
+  --azul: #3498db;
+}
+
+/* Reset e Estilos Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+body {
+  background-color: var(--cinza);
+  color: #333;
+  line-height: 1.5;
+  padding: 20px;
+}
+
+/* Estilos do Modal de Login */
+#login-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+}
+
+#login-modal .modal-content {
+  background: white;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  padding: 2rem;
+  position: relative;
+  animation: modalFadeIn 0.3s;
+  box-shadow: var(--sombra-destaque);
+}
+
+#login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+#login-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#login-form label {
+  font-weight: 500;
+  color: var(--cinza-escuro);
+}
+
+#login-form input {
+  padding: 0.8rem;
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+#login-form input:focus {
+  border-color: var(--roxo);
+  outline: none;
+}
+
+#login-message {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* Header Estilizado */
+header {
+  background: linear-gradient(135deg, var(--roxo), #8e44ad);
+  padding: 12px 20px;
+  box-shadow: var(--sombra);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px 8px 0 0;
+  color: white;
+  gap: 1rem;
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-right: auto;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 25px;
+  padding: 0.3rem 1rem;
+  transition: all 0.3s;
+}
+
+.search-container:hover {
+  background: var(--branco);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-container input {
+  border: none;
+  background: transparent;
+  padding: 0.5rem;
+  width: 180px;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.search-container button {
+  background: transparent;
+  border: none;
+  color: var(--roxo);
+  cursor: pointer;
+}
+
+/* Formulário Compacto */
+.form-section {
+  background: var(--branco);
+  padding: 15px;
+  border-radius: 0 0 8px 8px;
+  box-shadow: var(--sombra);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  align-items: end;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  color: var(--cinza-escuro);
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.form-group input {
+  padding: 8px 10px;
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: border 0.3s;
+}
+
+.form-group input:focus {
+  border-color: var(--roxo);
+  outline: none;
+}
+
+.plano-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.plano-buttons button {
+  flex: 1;
+  padding: 8px;
+  border: 2px solid var(--roxo);
+  border-radius: 6px;
+  background: none;
+  color: var(--roxo);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 0.85rem;
+}
+
+.plano-buttons button:hover {
+  background: var(--roxo-claro);
+}
+
+.plano-buttons button.selected {
+  background: var(--roxo);
+  color: white;
+}
+
+#adicionar-btn {
+  grid-column: 1 / -1;
+  justify-self: end;
+  margin-top: 5px;
+  width: 120px;
+}
+
+/* Tabela Estilizada */
+.info-table {
+  background: var(--branco);
+  border-radius: 8px;
+  box-shadow: var(--sombra);
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background: var(--roxo);
+  color: white;
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: 600;
+}
+
+td {
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--borda);
+}
+
+tr:hover {
+  background: var(--cinza-claro);
+}
+
+/* Botões de Ação */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.btn i {
+  font-size: 0.85rem;
+}
+
+.btn.add {
+  background: var(--verde);
+  color: white;
+}
+
+.btn.edit {
+  background: var(--azul);
+  color: white;
+}
+
+.btn.delete {
+  background: var(--vermelho);
+  color: white;
+}
+
+#logout-btn {
+  background: var(--vermelho);
+  padding: 0.5rem 0.8rem;
+}
+
+#logout-btn:hover {
+  background: var(--vermelho-escuro);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+/* Modal Compacto Aprimorado */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+}
+
+.modal-content {
+  background: white;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 480px;
+  padding: 1.2rem;
+  position: relative;
+  animation: modalFadeIn 0.3s;
+  box-shadow: var(--sombra-destaque);
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(-15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 1.4rem;
+  color: var(--cinza-escuro);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close:hover {
+  color: var(--roxo);
+}
+
+/* Card de Detalhes Compacto */
+#detalhes-cliente {
+  background: linear-gradient(to right, #f9f9f9, var(--branco));
+  padding: 0.8rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+#detalhes-cliente p {
+  margin: 0.6rem 0;
+  padding: 0.7rem;
+  background: var(--branco);
+  border-left: 3px solid var(--roxo);
+  border-radius: 0 5px 5px 0;
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+#detalhes-cliente p strong {
+  color: var(--roxo);
+  min-width: 100px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+#controle-consultas {
+  background: var(--branco);
+  padding: 0.8rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+#controle-consultas h3 {
+  font-size: 0.95rem;
+  margin-bottom: 0.8rem;
+  color: var(--roxo);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+#contador {
+  background: var(--roxo);
+  color: white;
+  padding: 0.15rem 0.5rem;
+  border-radius: 10px;
+  font-size: 0.8rem;
+}
+
+#campos-data {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin: 0.8rem 0;
+}
+
+.data-input {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.data-input input {
+  padding: 0.5rem;
+  border: 1px solid var(--borda);
+  border-radius: 5px;
+  font-size: 0.85rem;
+  flex: 1;
+}
+
+.data-input span {
+  font-size: 0.8rem;
+  min-width: 65px;
+  color: var(--cinza-escuro);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+  
+  header {
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+  }
+  
+  .user-info {
+    margin-right: 0;
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .search-container {
+    width: 100%;
+  }
+  
+  .search-container input {
+    width: 100%;
+  }
+  
+  .form-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .modal-content {
+    width: 95%;
+    padding: 1rem;
+  }
+  
+  #detalhes-cliente p {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+  }
+  
+  #detalhes-cliente p strong {
+    min-width: auto;
+  }
+  
+  .data-input {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .action-buttons {
+    flex-direction: column;
+  }
+  
+  .btn {
+    justify-content: center;
+  }
+}

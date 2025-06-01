@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestão de Pacientes - Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Modal de Login -->
+  <div id="login-modal" class="modal">
+    <div class="modal-content">
+      <h2>Login</h2>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="login-email">Email:</label>
+          <input type="email" id="login-email" required>
+        </div>
+        <div class="form-group">
+          <label for="login-nome">Nome:</label>
+          <input type="text" id="login-nome" required>
+        </div>
+        <div class="form-group">
+          <label for="login-senha">Senha:</label>
+          <input type="password" id="login-senha" required>
+        </div>
+        <button type="submit" class="btn add">Entrar</button>
+      </form>
+      <div id="login-message" style="margin-top: 15px; color: red;"></div>
+    </div>
+  </div>
+
+  <!-- Conteúdo Principal (visível apenas após login) -->
+  <div id="conteudo-principal" style="display: none;">
+    <header>
+      <div class="logo">Gestão de Pacientes</div>
+      <div class="user-info">
+        <span id="nome-usuario"></span>
+        <button id="logout-btn" class="btn delete"><i class="fas fa-sign-out-alt"></i> Sair</button>
+      </div>
+      <div class="search-container">
+        <input type="text" placeholder="Pesquisar...">
+        <button><i class="fas fa-search"></i></button>
+      </div>
+    </header>
+
+    <main>
+      <section class="form-section">
+        <div class="form-group">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome">
+        </div>
+        
+        <div class="form-group">
+          <label for="data-pagamento">Data Pagamento:</label>
+          <input type="date" id="data-pagamento">
+        </div>
+        
+        <div class="form-group">
+          <div class="plano-buttons">
+            <button onclick="selecionarPlano(this, 'Mensal')">Mensal</button>
+            <button onclick="selecionarPlano(this, 'Unitário')">Unitário</button>
+          </div>
+        </div>
+        
+        <button class="btn add" id="adicionar-btn">Adicionar</button>
+      </section>
+
+      <section class="info-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Plano</th>
+              <th>Consultas</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="tabela-dados"></tbody>
+        </table>
+      </section>
+    </main>
+
+    <!-- Modal de Detalhes -->
+    <div id="detalhes-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Detalhes do Paciente</h2>
+        <div id="detalhes-cliente"></div>
+        <div id="controle-consultas">
+          <h3>Consultas: <span id="contador">0/1</span></h3>
+          <div id="campos-data"></div>
+          <button id="salvar-consultas" class="btn add">Salvar Consultas</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Edição -->
+    <div id="editar-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Editar Paciente</h2>
+        <div class="form-section">
+          <div class="form-group">
+            <label for="editar-nome">Nome:</label>
+            <input type="text" id="editar-nome">
+          </div>
+          
+          <div class="form-group">
+            <label for="editar-data">Data Pagamento:</label>
+            <input type="date" id="editar-data">
+          </div>
+          
+          <div class="form-group">
+            <div class="plano-buttons">
+              <button onclick="selecionarPlanoModal(this, 'Mensal')">Mensal</button>
+              <button onclick="selecionarPlanoModal(this, 'Unitário')">Unitário</button>
+            </div>
+          </div>
+          
+          <button class="btn add" onclick="salvarEdicao()">Salvar Edição</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
